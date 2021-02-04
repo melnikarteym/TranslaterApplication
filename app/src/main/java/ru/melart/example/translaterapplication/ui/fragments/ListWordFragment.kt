@@ -4,25 +4,28 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_list_word.*
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
 import ru.melart.example.translaterapplication.R
+import ru.melart.example.translaterapplication.presenters.ListWordPresenter
 import ru.melart.example.translaterapplication.respositories.db.entities.Word
 import ru.melart.example.translaterapplication.ui.activities.OnCreateButtonClickListener
 import ru.melart.example.translaterapplication.ui.activities.OnItemClickListener
 import ru.melart.example.translaterapplication.ui.adapters.WordAdapter
-import ru.melart.example.translaterapplication.viewmodels.ListViewModel
+import ru.melart.example.translaterapplication.view.ListWordView
 
-class ListFragment : Fragment(R.layout.fragment_list_word) {
+class ListWordFragment : MvpAppCompatFragment(R.layout.fragment_list_word), ListWordView {
 
     private var onItemCLickListener: OnItemClickListener? = null
     private var onCreateButtonClickListener: OnCreateButtonClickListener? = null
 
-    private lateinit var wordAdapter: WordAdapter
+    @InjectPresenter
+    lateinit var presenter: ListWordPresenter
 
-    private val viewModel: ListViewModel by lazy { ViewModelProvider(this).get(ListViewModel::class.java) }
+    private lateinit var wordAdapter: WordAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -38,6 +41,7 @@ class ListFragment : Fragment(R.layout.fragment_list_word) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
+        presenter.updateData()
         createButton.setOnClickListener { onCreateButtonClickListener?.onCreateButtonClicked() }
     }
 
@@ -53,10 +57,23 @@ class ListFragment : Fragment(R.layout.fragment_list_word) {
             adapter = wordAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-        viewModel.words.observe(viewLifecycleOwner, { updateUi(it) })
     }
 
-    private fun updateUi(words: List<Word>) {
+    override fun showLoading() {
+        recyclerWords.isVisible = false
+        emptyListView.isVisible = false
+        repeatButton.isVisible = false
+        wordsProgressBar.isVisible = true
+    }
+
+    override fun showError(throwable: Throwable) {
+        Snackbar.make(createButton, getString(R.string.error), Snackbar.LENGTH_SHORT).show()
+        repeatButton.isVisible = true
+    }
+
+    override fun showResult(words: List<Word>) {
+        repeatButton.isVisible = false
+        wordsProgressBar.isVisible = false
         recyclerWords.isVisible = words.isNotEmpty()
         emptyListView.isVisible = words.isEmpty()
 

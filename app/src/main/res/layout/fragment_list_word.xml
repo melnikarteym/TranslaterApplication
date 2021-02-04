@@ -8,6 +8,7 @@
         android:id="@+id/recyclerWords"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         tools:listitem="@layout/item_word" />
 
     <TextView
@@ -21,6 +22,20 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/wordsProgressBar"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/repeatButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/repeat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createButton"

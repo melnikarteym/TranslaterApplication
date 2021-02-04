@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Translater Application</string>
+    <string name="app_name">Translator Application</string>
     <string name="description_add_word">Add new word</string>
     <string name="hint_enter_word">Введите слово</string>
     <string name="add">Добавить</string>
     <string name="empty_list_description">Ничего пока что нет, попробуйте добавить слово</string>
+    <string name="success_added_word">Слово успешно добавлено</string>
+    <string name="error">Произошла ошибка, повторите снова</string>
+    <string name="repeat">Повторить</string>
 </resources>
