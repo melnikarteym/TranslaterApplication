@@ -22,6 +22,8 @@ class CreatorFragment : MvpAppCompatFragment(R.layout.fragment_creator), Creator
         createButton.setOnClickListener {
             presenter.addWord(inputWord.text.toString())
         }
+
+        presenter.getWordByValue("ASD")
     }
 
     override fun showLoading() {

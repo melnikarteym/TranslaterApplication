@@ -5,7 +5,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
 import moxy.MvpPresenter
-import ru.melart.example.translaterapplication.respositories.db.WordRepository
+import ru.melart.example.translaterapplication.respositories.WordRepository
 import ru.melart.example.translaterapplication.view.ListWordView
 import java.util.concurrent.TimeUnit
 

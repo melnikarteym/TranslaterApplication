@@ -1,9 +1,10 @@
-package ru.melart.example.translaterapplication.respositories.db
+package ru.melart.example.translaterapplication.respositories
 
 import android.content.Context
 import androidx.room.Room
 import io.reactivex.Completable
 import io.reactivex.Observable
+import ru.melart.example.translaterapplication.respositories.db.WordDatabase
 import ru.melart.example.translaterapplication.respositories.db.entities.Word
 import java.lang.IllegalStateException
 
@@ -16,6 +17,10 @@ class WordRepository private constructor(context: Context) {
 
     fun getWords(): Observable<List<Word>> {
         return wordDao.getWord()
+    }
+
+    fun getWordByValue(value: String): Observable<Word?> {
+        return wordDao.getWordByValue(value)
     }
 
     fun insertWord(word: Word): Completable {
@@ -33,7 +38,7 @@ class WordRepository private constructor(context: Context) {
             }
         }
 
-        fun get(): WordRepository{
+        fun get(): WordRepository {
             return INSTANCE ?: throw IllegalStateException("WordRepository must be initialized")
         }
     }

@@ -11,7 +11,7 @@ interface WordDao {
     fun getWord(): Observable<List<Word>>
 
     @Query("SELECT * FROM word WHERE value =:value LIMIT 1 ")
-    fun getWordByValue(value: String): Observable<Word>
+    fun getWordByValue(value: String): Observable<Word?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertWord(word: Word): Completable
