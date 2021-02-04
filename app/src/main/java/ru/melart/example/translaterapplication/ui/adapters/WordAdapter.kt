@@ -16,8 +16,11 @@ class WordAdapter(private val clickListener: (Word) -> Unit) :
         RecyclerView.ViewHolder(view) {
 
         fun bind(word: Word) {
-            itemView.setOnClickListener { clickListener(word) }
-            itemView.wordValue.text = word.value
+            with(itemView) {
+                setOnClickListener { clickListener(word) }
+                wordValue.text = word.value
+                wordTranslate.text = word.translate
+            }
         }
     }
 

@@ -67,7 +67,7 @@ class ListWordFragment : MvpAppCompatFragment(R.layout.fragment_list_word), List
     }
 
     override fun showError(throwable: Throwable) {
-        Snackbar.make(createButton, getString(R.string.error), Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(createButton, getString(R.string.network_error), Snackbar.LENGTH_SHORT).show()
         repeatButton.isVisible = true
     }
 
@@ -76,7 +76,6 @@ class ListWordFragment : MvpAppCompatFragment(R.layout.fragment_list_word), List
         wordsProgressBar.isVisible = false
         recyclerWords.isVisible = words.isNotEmpty()
         emptyListView.isVisible = words.isEmpty()
-
         wordAdapter.submitList(words)
     }
 }

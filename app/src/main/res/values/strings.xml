@@ -5,6 +5,8 @@
     <string name="add">Добавить</string>
     <string name="empty_list_description">Ничего пока что нет, попробуйте добавить слово</string>
     <string name="success_added_word">Слово успешно добавлено</string>
-    <string name="error">Произошла ошибка, повторите снова</string>
+    <string name="network_error">Произошла ошибка, повторите снова</string>
     <string name="repeat">Повторить</string>
+    <string name="network_loss">Соединение с интернетом потеряно</string>
+    <string name="network_available">Появилось соединение с интернетом</string>
 </resources>

@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_detail_word.*
 import ru.melart.example.translaterapplication.R
 import ru.melart.example.translaterapplication.respositories.db.entities.Word
-import java.lang.IllegalStateException
 
 class DetailFragment : Fragment(R.layout.fragment_detail_word) {
 
@@ -16,8 +15,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail_word) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        word = requireArguments().getParcelable(KEY_ID) as? Word
-            ?: throw IllegalStateException("You don't use contract of this Fragment.")
+        word = requireArguments().getParcelable(KEY_ID) as? Word ?: throw IllegalStateException("You don't use contract of this Fragment.")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

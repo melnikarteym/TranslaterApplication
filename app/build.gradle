@@ -15,8 +15,6 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -42,9 +40,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    // lifecycle
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-
     // rxJava
     implementation "io.reactivex.rxjava2:rxjava:2.2.20"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
@@ -52,12 +47,11 @@ dependencies {
     // recyclerView
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    // network
+    // retrofit
     def retrofit_version = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
     // room
     def room_version = "2.2.6"

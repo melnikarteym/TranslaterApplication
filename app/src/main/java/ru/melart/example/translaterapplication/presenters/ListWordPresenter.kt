@@ -7,7 +7,6 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 import ru.melart.example.translaterapplication.respositories.WordRepository
 import ru.melart.example.translaterapplication.view.ListWordView
-import java.util.concurrent.TimeUnit
 
 @InjectViewState
 class ListWordPresenter : MvpPresenter<ListWordView>() {
@@ -20,13 +19,11 @@ class ListWordPresenter : MvpPresenter<ListWordView>() {
         val disposable = repository.getWords()
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { viewState.showLoading() }
-            .delay(2, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ words ->
-                viewState.showResult(words)
-            }, { error ->
-                viewState.showError(error)
-            })
+            .subscribe(
+                { words -> viewState.showResult(words) },
+                { error -> viewState.showError(error) }
+            )
 
         compositeDisposable.add(disposable)
     }

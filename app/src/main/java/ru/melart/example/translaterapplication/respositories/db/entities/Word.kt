@@ -8,8 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "word")
 data class Word(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    @PrimaryKey
     val value: String,
     val translate: String
 ) : Parcelable

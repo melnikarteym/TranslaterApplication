@@ -8,6 +8,7 @@
         android:id="@+id/recyclerWords"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="vertical"
         android:visibility="gone"
         tools:listitem="@layout/item_word" />
 
@@ -30,12 +31,12 @@
         android:layout_gravity="center" />
 
     <Button
-        android:visibility="gone"
         android:id="@+id/repeatButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/repeat" />
+        android:text="@string/repeat"
+        android:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createButton"

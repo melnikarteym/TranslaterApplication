@@ -1,7 +1,6 @@
 package ru.melart.example.translaterapplication.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ru.melart.example.translaterapplication.R
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity(), OnItemClickListener, OnCreateButtonCli
     }
 
     companion object {
-        private const val TAG = "MainActivity"
         private const val FRAGMENT_LIST_WORD_KEY = "MainActivity.FRAGMENT_LIST_WORD_KEY"
     }
 }
